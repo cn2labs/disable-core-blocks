@@ -5,6 +5,7 @@
   Version: 1.0
   Author: connect2
   Author URI: https://github.com/cn2labs
+  Plugin URI: https://github.com/cn2labs/disable-core-blocks
 */
 
 class DisableCoreBlocks {
