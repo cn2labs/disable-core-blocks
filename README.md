@@ -4,9 +4,8 @@ Enable only certain core blocks for the Gutenberg editor.
 
 Settings can be found in the WordPress Admin area (Settings → Disable Core Blocks).
 
+All registered ACF Blocks are enabled by default.
+
 ## Installation
 
-- `cd` into your WordPress site's plugins folder (wp-content/plugins)
-- `git clone` the repository
-- `cd` into the plugin folder (disable-core-blocks)
-- `rm -rf .git` Remove the Git stuff
+Just download the latest version from the [Releases page](https://github.com/cn2labs/disable-core-blocks/releases/) as ZIP and put the unzipped folder in your `wp-content/plugins` directory.

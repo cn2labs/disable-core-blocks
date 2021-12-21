@@ -3,7 +3,7 @@
   Plugin Name: Disable Core Blocks
   Description: Deaktiviert ausgewählte Core Blöcke für die gesamte Seite.
   Version: 1.0
-  Author: connect2
+  Author: Jannik Baranczyk (@wh1zk1d)
   Author URI: https://github.com/cn2labs
   Plugin URI: https://github.com/cn2labs/disable-core-blocks
 */
@@ -222,308 +222,255 @@ class DisableCoreBlocks {
   <?php }
 
   function allowedCoreBlocks($allowed_block_types) {
-    $allowed_core_blocks = array();
+    $allowed_blocks = array();
+
+    // Get registered ACF blocks and add them to the allowed blocks
+    if (function_exists('acf_get_block_types')) {
+      $acf_blocks = acf_get_block_types();
+      $allowed_blocks[] = $acf_blocks;
+    }
 
     if (get_option('dcb_archives', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/archives';
+      $allowed_blocks[] = 'core/archives';
     }
-
 
     if (get_option('dcb_audio', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/audio';
+      $allowed_blocks[] = 'core/audio';
     }
-
 
     if (get_option('dcb_block', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/block';
+      $allowed_blocks[] = 'core/block';
     }
-
 
     if (get_option('dcb_button', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/button';
+      $allowed_blocks[] = 'core/button';
     }
-
 
     if (get_option('dcb_buttons', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/buttons';
+      $allowed_blocks[] = 'core/buttons';
     }
-
 
     if (get_option('dcb_calendar', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/calendar';
+      $allowed_blocks[] = 'core/calendar';
     }
-
 
     if (get_option('dcb_categories', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/categories';
+      $allowed_blocks[] = 'core/categories';
     }
-
 
     if (get_option('dcb_code', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/code';
+      $allowed_blocks[] = 'core/code';
     }
-
 
     if (get_option('dcb_column', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/column';
+      $allowed_blocks[] = 'core/column';
     }
-
 
     if (get_option('dcb_columns', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/columns';
+      $allowed_blocks[] = 'core/columns';
     }
-
 
     if (get_option('dcb_cover', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/cover';
+      $allowed_blocks[] = 'core/cover';
     }
-
 
     if (get_option('dcb_embed', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/embed';
+      $allowed_blocks[] = 'core/embed';
     }
-
 
     if (get_option('dcb_file', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/file';
+      $allowed_blocks[] = 'core/file';
     }
-
 
     if (get_option('dcb_freeform', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/freeform';
+      $allowed_blocks[] = 'core/freeform';
     }
-
 
     if (get_option('dcb_gallery', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/gallery';
+      $allowed_blocks[] = 'core/gallery';
     }
-
 
     if (get_option('dcb_group', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/group';
+      $allowed_blocks[] = 'core/group';
     }
-
 
     if (get_option('dcb_heading', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/heading';
+      $allowed_blocks[] = 'core/heading';
     }
-
 
     if (get_option('dcb_html', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/html';
+      $allowed_blocks[] = 'core/html';
     }
-
 
     if (get_option('dcb_image', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/image';
+      $allowed_blocks[] = 'core/image';
     }
-
 
     if (get_option('dcb_latest-comments', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/latest-comments';
+      $allowed_blocks[] = 'core/latest-comments';
     }
-
 
     if (get_option('dcb_latest-posts', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/latest-posts';
+      $allowed_blocks[] = 'core/latest-posts';
     }
-
 
     if (get_option('dcb_list', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/list';
+      $allowed_blocks[] = 'core/list';
     }
-
 
     if (get_option('dcb_loginout', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/loginout';
+      $allowed_blocks[] = 'core/loginout';
     }
-
 
     if (get_option('dcb_media-text', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/media-text';
+      $allowed_blocks[] = 'core/media-text';
     }
-
 
     if (get_option('dcb_missing', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/missing';
+      $allowed_blocks[] = 'core/missing';
     }
-
 
     if (get_option('dcb_more', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/more';
+      $allowed_blocks[] = 'core/more';
     }
-
 
     if (get_option('dcb_nextpage', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/nextpage';
+      $allowed_blocks[] = 'core/nextpage';
     }
-
 
     if (get_option('dcb_page-list', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/page-list';
+      $allowed_blocks[] = 'core/page-list';
     }
-
 
     if (get_option('dcb_paragraph', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/paragraph';
+      $allowed_blocks[] = 'core/paragraph';
     }
-
 
     if (get_option('dcb_post-content', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/post-content';
+      $allowed_blocks[] = 'core/post-content';
     }
-
 
     if (get_option('dcb_post-date', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/post-date';
+      $allowed_blocks[] = 'core/post-date';
     }
-
 
     if (get_option('dcb_post-excerpt', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/post-excerpt';
+      $allowed_blocks[] = 'core/post-excerpt';
     }
-
 
     if (get_option('dcb_post-featured-image', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/post-featured-image';
+      $allowed_blocks[] = 'core/post-featured-image';
     }
-
 
     if (get_option('dcb_post-template', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/post-template';
+      $allowed_blocks[] = 'core/post-template';
     }
-
 
     if (get_option('dcb_post-terms', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/post-terms';
+      $allowed_blocks[] = 'core/post-terms';
     }
-
 
     if (get_option('dcb_post-title', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/post-title';
+      $allowed_blocks[] = 'core/post-title';
     }
-
 
     if (get_option('dcb_preformatted', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/preformatted';
+      $allowed_blocks[] = 'core/preformatted';
     }
-
 
     if (get_option('dcb_pullquote', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/pullquote';
+      $allowed_blocks[] = 'core/pullquote';
     }
-
 
     if (get_option('dcb_query', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/query';
+      $allowed_blocks[] = 'core/query';
     }
-
 
     if (get_option('dcb_query-pagination', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/query-pagination';
+      $allowed_blocks[] = 'core/query-pagination';
     }
-
 
     if (get_option('dcb_query-pagination-next', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/query-pagination-next';
+      $allowed_blocks[] = 'core/query-pagination-next';
     }
-
 
     if (get_option('dcb_query-pagination-numbers', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/query-pagination-numbers';
+      $allowed_blocks[] = 'core/query-pagination-numbers';
     }
-
 
     if (get_option('dcb_query-pagination-previous', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/query-pagination-previous';
+      $allowed_blocks[] = 'core/query-pagination-previous';
     }
-
 
     if (get_option('dcb_query-title', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/query-title';
+      $allowed_blocks[] = 'core/query-title';
     }
-
 
     if (get_option('dcb_quote', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/quote';
+      $allowed_blocks[] = 'core/quote';
     }
-
 
     if (get_option('dcb_rss', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/rss';
+      $allowed_blocks[] = 'core/rss';
     }
-
 
     if (get_option('dcb_search', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/search';
+      $allowed_blocks[] = 'core/search';
     }
-
 
     if (get_option('dcb_separator', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/separator';
+      $allowed_blocks[] = 'core/separator';
     }
-
 
     if (get_option('dcb_shortcode', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/shortcode';
+      $allowed_blocks[] = 'core/shortcode';
     }
-
 
     if (get_option('dcb_site-logo', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/site-logo';
+      $allowed_blocks[] = 'core/site-logo';
     }
-
 
     if (get_option('dcb_site-tagline', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/site-tagline';
+      $allowed_blocks[] = 'core/site-tagline';
     }
-
 
     if (get_option('dcb_site-title', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/site-title';
+      $allowed_blocks[] = 'core/site-title';
     }
-
 
     if (get_option('dcb_social-link', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/social-link';
+      $allowed_blocks[] = 'core/social-link';
     }
-
 
     if (get_option('dcb_social-links', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/social-links';
+      $allowed_blocks[] = 'core/social-links';
     }
-
 
     if (get_option('dcb_spacer', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/spacer';
+      $allowed_blocks[] = 'core/spacer';
     }
-
 
     if (get_option('dcb_table', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/table';
+      $allowed_blocks[] = 'core/table';
     }
-
 
     if (get_option('dcb_tag-cloud', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/tag-cloud';
+      $allowed_blocks[] = 'core/tag-cloud';
     }
-
 
     if (get_option('dcb_text-columns', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/text-columns';
+      $allowed_blocks[] = 'core/text-columns';
     }
-
 
     if (get_option('dcb_verse', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/verse';
+      $allowed_blocks[] = 'core/verse';
     }
-
 
     if (get_option('dcb_video', '0' == '1')) {
-      $allowed_core_blocks[] = 'core/video';
+      $allowed_blocks[] = 'core/video';
     }
 
-    return $allowed_core_blocks;
+    return $allowed_blocks;
   }
 }
 
